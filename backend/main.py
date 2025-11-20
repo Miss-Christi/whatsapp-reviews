@@ -9,7 +9,10 @@ from typing import List
 
 # --- CONFIGURATION ---
 # Update with your Postgres credentials: postgresql://user:password@localhost/dbname
-DATABASE_URL = "postgresql://postgres:password@localhost/whatsapp_db"
+DATABASE_URL = os.getenv("DATABASE_url", "postgresql://neondb_owner:npg_e7Gqrd8JhQlN@ep-empty-pond-a4jo93c3-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 # --- DATABASE SETUP ---
 engine = create_engine(DATABASE_URL)
