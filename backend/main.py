@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Form, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
@@ -9,7 +10,7 @@ from typing import List
 
 # --- CONFIGURATION ---
 # Update with your Postgres credentials: postgresql://user:password@localhost/dbname
-DATABASE_URL = os.getenv("DATABASE_url", "postgresql://neondb_owner:npg_e7Gqrd8JhQlN@ep-empty-pond-a4jo93c3-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+DATABASE_URL = os.getenv("DATABASE_url", "postgresql://neondb_owner:npg_e7Gqrd8JhQlN@ep-patient-butterfly-a4qk94jh.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
 
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
